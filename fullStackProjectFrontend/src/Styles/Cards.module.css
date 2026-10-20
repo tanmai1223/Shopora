@@ -1,0 +1,265 @@
+.cardGrid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 30px;
+}
+
+/* Product card */
+
+.card {
+  background-color: white;
+  border-radius: 10px;
+  padding: 15px;
+  box-sizing: border-box;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  min-width: 0;
+}
+
+.card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+}
+
+/* Product image */
+
+.imageContainer {
+  width: 100%;
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.imageContainer img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* Product name */
+
+.card h3 {
+  margin: 15px 0 5px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #222;
+
+  /* Prevent very long names from breaking the card */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Brand */
+
+.brand {
+  margin: 0 0 8px;
+  font-size: 13px;
+  color: #777;
+}
+
+/* Price */
+
+.price {
+  margin: 0 0 15px;
+  font-size: 18px;
+  font-weight: 700;
+  color: #222;
+}
+
+/* Add to cart */
+
+.card button {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 6px;
+  background-color: #2563eb;
+  color: white;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.card button:hover {
+  background-color: #1d4ed8;
+}
+
+.adminActions {
+  display: flex;
+  gap: 8px;
+}
+
+.updateButton,
+.deleteButton {
+  padding: 11px 15px;
+
+  border-radius: 7px;
+
+  font-size: 13px;
+
+  cursor: pointer;
+}
+
+.updateButton {
+  border: 1px solid #2563eb;
+
+  background: white;
+  color: #2563eb;
+}
+
+.updateButton:hover {
+  background: #eff6ff;
+}
+
+.deleteButton {
+  border: 1px solid #dc2626;
+
+  background: white;
+  color: #dc2626;
+}
+
+.deleteButton:hover {
+  background: #fef2f2;
+}
+
+
+/* =========================
+   LARGE TABLET / SMALL LAPTOP
+========================= */
+
+@media (max-width: 1200px) {
+  .cardGrid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 25px;
+  }
+
+  .imageContainer {
+    height: 190px;
+  }
+}
+
+
+/* =========================
+   TABLET
+========================= */
+
+@media (max-width: 900px) {
+  .cardGrid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+
+  .card {
+    padding: 13px;
+  }
+
+  .imageContainer {
+    height: 180px;
+  }
+
+  .card h3 {
+    font-size: 15px;
+  }
+
+  .price {
+    font-size: 17px;
+  }
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 600px) {
+  .cardGrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+  }
+
+  .card {
+    padding: 12px;
+    border-radius: 8px;
+  }
+
+  .imageContainer {
+    height: 150px;
+  }
+
+  .card h3 {
+    margin: 10px 0 4px;
+    font-size: 14px;
+  }
+
+  .brand {
+    font-size: 12px;
+    margin-bottom: 6px;
+  }
+
+  .price {
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+
+  .card button {
+    padding: 9px 6px;
+    font-size: 13px;
+  }
+  .adminActions {
+    width: 100%;
+
+    display: flex;
+
+    gap: 8px;
+  }
+
+  .updateButton,
+  .deleteButton {
+    flex: 1;
+
+    padding: 10px;
+
+    font-size: 13px;
+  }
+}
+
+
+/* =========================
+   SMALL MOBILE
+========================= */
+
+@media (max-width: 400px) {
+  .cardGrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+
+  .card {
+    padding: 10px;
+  }
+
+  .imageContainer {
+    height: 125px;
+  }
+
+  .card h3 {
+    font-size: 13px;
+  }
+
+  .brand {
+    font-size: 11px;
+  }
+
+  .price {
+    font-size: 15px;
+  }
+
+  .card button {
+    padding: 8px 5px;
+    font-size: 12px;
+  }
+}

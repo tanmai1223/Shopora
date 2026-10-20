@@ -1,0 +1,398 @@
+.page {
+  min-height: calc(100vh - 100px);
+  background: #f7f8fa;
+  padding: 40px;
+  box-sizing: border-box;
+}
+
+.formContainer {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  background: white;
+  border-radius: 12px;
+  padding: 35px 40px;
+  box-sizing: border-box;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+}
+
+.header {
+  margin-bottom: 30px;
+}
+
+.header h1 {
+  margin: 0;
+  font-size: 28px;
+  color: #222;
+}
+
+.header p {
+  margin: 7px 0 0;
+  color: #777;
+  font-size: 14px;
+}
+
+.formGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 22px 25px;
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 0;
+}
+
+.formGroup label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #333;
+}
+
+.formGroup input,
+.formGroup select,
+.formGroup textarea {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 12px 14px;
+  border: 1px solid #d8dce2;
+  border-radius: 7px;
+  font-size: 14px;
+  font-family: inherit;
+  outline: none;
+  transition: border 0.2s;
+  background: white;
+  max-width: 100%;
+}
+
+.formGroup input:focus,
+.formGroup select:focus,
+.formGroup textarea:focus {
+  border-color: #2563eb;
+}
+
+.formGroup textarea {
+  resize: vertical;
+  min-height: 110px;
+}
+
+.fullWidth {
+  grid-column: 1 / -1;
+}
+
+.inputWithSymbol {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.inputWithSymbol span {
+  position: absolute;
+  left: 14px;
+  color: #555;
+  font-size: 14px;
+}
+
+.inputWithSymbol input {
+  padding-left: 30px;
+}
+
+.fileBox {
+  border: 2px dashed #d5d9df;
+  border-radius: 8px;
+  padding: 20px;
+  text-align: center;
+  transition: 0.2s;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.fileBox:hover {
+  border-color: #2563eb;
+}
+
+.fileBox input {
+  border: none;
+  padding: 0;
+  max-width: 100%;
+}
+
+.fileBox p {
+  margin: 8px 0 0;
+  color: #777;
+  font-size: 13px;
+}
+
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 32px;
+  padding-top: 25px;
+  border-top: 1px solid #eee;
+}
+
+.actions button {
+  padding: 11px 22px;
+  border-radius: 7px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+}
+
+.cancelButton {
+  background: #f1f2f4;
+  color: #444;
+}
+
+.cancelButton:hover {
+  background: #e5e7eb;
+}
+
+.submitButton {
+  background: #2563eb;
+  color: white;
+}
+
+.submitButton:hover {
+  background: #1d4ed8;
+}
+
+.categoryInputWrapper {
+  position: relative;
+  width: 100%;
+}
+
+.categoryInputWrapper input {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 12px 40px 12px 14px;
+  border: 1px solid #d8dce2;
+  border-radius: 7px;
+  font-size: 14px;
+  outline: none;
+  background: white;
+}
+
+.categoryInputWrapper input:focus {
+  border-color: #2563eb;
+}
+
+.dropdownArrow {
+  position: absolute;
+  right: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 12px;
+  color: #333;
+  cursor: pointer;
+}
+
+.categoryDropdown {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  width: 100%;
+  max-height: 220px;
+  overflow-y: auto;
+  background: white;
+  border: 1px solid #d8dce2;
+  border-radius: 7px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+  z-index: 100;
+}
+
+.categoryOption,
+.newCategory {
+  padding: 12px 14px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.categoryOption:hover {
+  background-color: #f3f4f6;
+}
+
+.newCategory {
+  color: #2563eb;
+  font-weight: 500;
+  border-top: 1px solid #eee;
+}
+
+.newCategory:hover {
+  background-color: #eff6ff;
+}
+
+
+/* =========================
+   TABLET
+========================= */
+
+@media (max-width: 800px) {
+
+  .page {
+    padding: 25px;
+  }
+
+  .formContainer {
+    padding: 30px;
+  }
+
+  .formGrid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .fullWidth {
+    grid-column: auto;
+  }
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 600px) {
+
+  .page {
+    min-height: calc(100vh - 70px);
+    padding: 15px;
+  }
+
+  .formContainer {
+    width: 100%;
+    padding: 22px 18px;
+    border-radius: 10px;
+  }
+
+  .header {
+    margin-bottom: 22px;
+  }
+
+  .header h1 {
+    font-size: 23px;
+  }
+
+  .header p {
+    font-size: 13px;
+    line-height: 1.5;
+  }
+
+  .formGrid {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  .formGroup {
+    width: 100%;
+  }
+
+  .formGroup label {
+    font-size: 13px;
+  }
+
+  .formGroup input,
+  .formGroup select,
+  .formGroup textarea {
+    width: 100%;
+    padding: 11px 12px;
+    font-size: 14px;
+  }
+
+  .formGroup textarea {
+    min-height: 100px;
+  }
+
+  .inputWithSymbol input {
+    padding-left: 28px;
+  }
+
+  .fileBox {
+    padding: 18px 12px;
+  }
+
+  .fileBox input {
+    width: 100%;
+    font-size: 13px;
+  }
+
+  .fileBox p {
+    font-size: 12px;
+  }
+
+  .categoryInputWrapper input {
+    padding: 11px 38px 11px 12px;
+  }
+
+  .categoryDropdown {
+    max-height: 180px;
+  }
+
+  .categoryOption,
+  .newCategory {
+    padding: 11px 12px;
+    font-size: 13px;
+  }
+
+  .actions {
+    flex-direction: column-reverse;
+    gap: 10px;
+    margin-top: 25px;
+    padding-top: 20px;
+  }
+
+  .actions button {
+    width: 100%;
+    padding: 12px;
+    font-size: 14px;
+  }
+}
+
+
+/* =========================
+   SMALL PHONES
+========================= */
+
+@media (max-width: 400px) {
+
+  .page {
+    padding: 10px;
+  }
+
+  .formContainer {
+    padding: 20px 14px;
+    border-radius: 8px;
+  }
+
+  .header h1 {
+    font-size: 21px;
+  }
+
+  .header p {
+    font-size: 12px;
+  }
+
+  .formGrid {
+    gap: 16px;
+  }
+
+  .formGroup input,
+  .formGroup select,
+  .formGroup textarea {
+    font-size: 13px;
+    padding: 10px 11px;
+  }
+
+  .fileBox {
+    padding: 15px 8px;
+  }
+
+  .fileBox input {
+    font-size: 12px;
+  }
+}

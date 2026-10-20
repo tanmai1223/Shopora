@@ -1,0 +1,442 @@
+.cartContainer {
+  background-color: white;
+  padding: 25px 30px;
+  max-width: 1400px;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+.cartHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 15px;
+}
+
+.cartHeader h1 {
+  margin: 0;
+  font-size: 32px;
+  font-weight: 500;
+}
+
+.cartHeader span {
+  color: #555;
+}
+
+.cartItems {
+  display: flex;
+  flex-direction: column;
+}
+
+.cartItem {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 25px 10px;
+  border-bottom: 1px solid #ddd;
+  box-sizing: border-box;
+}
+
+.checkbox {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.imageContainer {
+  width: 250px;
+  height: 220px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.imageContainer img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.productDetails {
+  flex: 1;
+  min-width: 0;
+}
+
+.productTitle {
+  font-size: 21px;
+  font-weight: 500;
+  margin: 0 0 10px;
+  cursor: pointer;
+}
+
+.productTitle:hover {
+  color: #0073bb;
+  text-decoration: underline;
+}
+
+.productDetails p {
+  margin: 6px 0;
+  font-size: 14px;
+}
+
+.stock {
+  color: #007600;
+  font-size: 14px !important;
+}
+
+.price {
+  font-size: 20px !important;
+  font-weight: 600;
+}
+
+/* Actions */
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 15px;
+}
+
+/* Quantity pill */
+
+.quantityControl {
+  display: flex;
+  align-items: center;
+  height: 38px;
+  width: fit-content;
+  border: 2px solid #f7c600;
+  border-radius: 20px;
+  overflow: hidden;
+  background-color: white;
+  flex-shrink: 0;
+}
+
+.quantityButton {
+  width: 42px;
+  height: 100%;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-size: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #111;
+}
+
+.quantityButton:hover {
+  background-color: #f5f5f5;
+}
+
+.quantity {
+  min-width: 32px;
+  text-align: center;
+  font-size: 16px;
+  font-weight: 600;
+  color: #111;
+}
+
+/* Divider */
+
+.divider {
+  width: 1px;
+  height: 20px;
+  background-color: #ccc;
+}
+
+/* Delete */
+
+.actions .delete {
+  border: none;
+  background: none;
+  color: #0073bb;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.actions .delete:hover {
+  text-decoration: underline;
+}
+
+/* Total */
+
+.itemTotal {
+  width: 150px;
+  align-self: flex-start;
+  text-align: right;
+  font-size: 20px;
+  font-weight: 600;
+  flex-shrink: 0;
+}
+
+/* Empty cart */
+
+.emptyCart {
+  background-color: white;
+  padding: 60px;
+  text-align: center;
+}
+
+.emptyCart h2 {
+  font-size: 28px;
+  margin-bottom: 10px;
+}
+
+.emptyCart p {
+  color: #666;
+}
+
+.message {
+  padding: 50px;
+  text-align: center;
+}
+
+
+/* =========================
+   TABLET
+========================= */
+
+@media (max-width: 900px) {
+
+  .cartContainer {
+    padding: 20px;
+  }
+
+  .cartItem {
+    gap: 15px;
+  }
+
+  .imageContainer {
+    width: 180px;
+    height: 180px;
+  }
+
+  .productTitle {
+    font-size: 19px;
+  }
+
+  .itemTotal {
+    width: 100px;
+    font-size: 18px;
+  }
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 600px) {
+
+  .cartContainer {
+    padding: 15px;
+    width: 100%;
+  }
+
+  .cartHeader {
+    padding-bottom: 12px;
+  }
+
+  .cartHeader h1 {
+    font-size: 24px;
+  }
+
+  .cartHeader span {
+    font-size: 13px;
+  }
+
+  .cartItem {
+    display: grid;
+    grid-template-columns: 20px 1fr;
+
+    gap: 12px;
+
+    padding: 20px 5px;
+
+    align-items: start;
+  }
+
+  .checkbox {
+    margin-top: 5px;
+  }
+
+  /* Product image */
+  .imageContainer {
+    width: 100%;
+    height: 180px;
+
+    grid-column: 2;
+    grid-row: 1;
+  }
+
+  /*
+    Make productDetails transparent to the grid.
+    Its children can now be positioned individually.
+  */
+  .productDetails {
+    display: contents;
+  }
+
+  /* Product title */
+  .productTitle {
+    grid-column: 2;
+    grid-row: 2;
+
+    font-size: 18px;
+
+    margin: 0 0 8px;
+
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  /* Stock */
+  .stock {
+    grid-column: 2;
+    grid-row: 3;
+
+    margin: 5px 0;
+
+    font-size: 13px !important;
+  }
+
+  /* Brand */
+  .productDetails p:nth-of-type(2) {
+    grid-column: 2;
+    grid-row: 4;
+
+    margin: 5px 0;
+
+    font-size: 13px;
+  }
+
+  /* Category */
+  .productDetails p:nth-of-type(3) {
+    grid-column: 2;
+    grid-row: 5;
+
+    margin: 5px 0;
+
+    font-size: 13px;
+  }
+
+  /*
+    TOTAL PRICE
+    Put it ABOVE the actions
+  */
+  .itemTotal {
+    grid-column: 2;
+    grid-row: 6;
+
+    width: 100%;
+
+    text-align: left;
+
+    align-self: auto;
+
+    font-size: 19px;
+
+    font-weight: 600;
+
+    margin: 5px 0 0;
+  }
+
+  /* Quantity + Delete */
+  .actions {
+    grid-column: 2;
+    grid-row: 7;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    margin-top: 8px;
+
+    flex-wrap: wrap;
+  }
+
+  .quantityControl {
+    height: 36px;
+  }
+
+  .quantityButton {
+    width: 38px;
+
+    font-size: 20px;
+  }
+
+  .quantity {
+    min-width: 30px;
+
+    font-size: 15px;
+  }
+
+  .divider {
+    height: 18px;
+  }
+
+  .actions .delete {
+    font-size: 13px;
+  }
+}
+
+
+/* =========================
+   SMALL MOBILE
+========================= */
+
+@media (max-width: 400px) {
+
+  .cartContainer {
+    padding: 10px;
+  }
+
+  .cartHeader h1 {
+    font-size: 21px;
+  }
+
+  .cartHeader span {
+    font-size: 12px;
+  }
+
+  .cartItem {
+    gap: 0px;
+    padding: 18px 2px;
+  }
+
+  .imageContainer {
+    height: 150px;
+    margin-bottom: 10px;
+  }
+
+  .productTitle {
+    font-size: 16px;
+  }
+
+  .productDetails p {
+    font-size: 12px;
+  }
+
+  .itemTotal {
+    font-size: 17px;
+  }
+
+  .quantityControl {
+    height: 34px;
+  }
+
+  .quantityButton {
+    width: 35px;
+  }
+
+  .quantity {
+    min-width: 28px;
+  }
+}

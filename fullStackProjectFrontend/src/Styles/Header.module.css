@@ -1,0 +1,781 @@
+.header {
+  width: 100%;
+  height: 70px;
+
+  display: flex;
+  align-items: center;
+
+  padding: 0 20px;
+  box-sizing: border-box;
+
+  background-color: #131921;
+
+  gap: 18px;
+}
+
+
+
+/* =========================
+   DELIVERY LOCATION
+========================= */
+
+.location {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+
+  color: white;
+  flex-shrink: 0;
+}
+
+.locationIcon {
+  font-size: 23px;
+}
+
+.locationText {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.1;
+}
+
+.locationText span {
+  font-size: 13px;
+  color: #e5e5e5;
+}
+
+.locationText strong {
+  font-size: 16px;
+  color: white;
+}
+
+
+/* =========================
+   SEARCH
+========================= */
+
+.searchContainer {
+  position: relative;
+  flex: 1;
+  min-width: 200px;
+}
+
+.search {
+  display: flex;
+  width: 100%;
+}
+
+.search input {
+  flex: 1;
+
+  width: 100%;
+  height: 40px;
+
+  padding: 0 45px 0 16px;
+
+  border: 1px solid #d5d5d5;
+  border-radius: 8px;
+
+  outline: none;
+
+  font-size: 16px;
+  box-sizing: border-box;
+}
+
+.search input:focus {
+  border-color: #2563eb;
+}
+
+.search button {
+  width: 45px;
+  height: 40px;
+
+  margin-left: -45px;
+
+  border: none;
+  background: transparent;
+
+  cursor: pointer;
+
+  font-size: 17px;
+  z-index: 2;
+}
+
+
+/* =========================
+   SEARCH DROPDOWN
+========================= */
+
+.searchDropdown {
+  position: absolute;
+
+  top: calc(100% + 5px);
+  left: 0;
+  right: 0;
+
+  background-color: white;
+
+  border-radius: 6px;
+
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+
+  overflow-y: auto;
+
+  max-height: 400px;
+
+  z-index: 1000;
+}
+
+.searchItem {
+  display: flex;
+  align-items: center;
+
+  gap: 12px;
+
+  padding: 10px 14px;
+
+  cursor: pointer;
+
+  border-bottom: 1px solid #eee;
+
+  transition: background-color 0.15s ease;
+}
+
+.searchItem:hover {
+  background-color: #f5f5f5;
+}
+
+.searchItem img {
+  width: 50px;
+  height: 50px;
+
+  object-fit: contain;
+
+  border-radius: 4px;
+
+  flex-shrink: 0;
+}
+
+.searchItemInfo {
+  display: flex;
+  flex-direction: column;
+
+  gap: 3px;
+
+  min-width: 0;
+}
+
+.searchItemInfo strong {
+  font-size: 14px;
+
+  color: #222;
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.searchItemInfo span {
+  font-size: 12px;
+  color: #777;
+}
+
+.searchItemInfo small {
+  font-size: 13px;
+
+  font-weight: 600;
+
+  color: #111;
+}
+
+.searchMessage {
+  padding: 18px;
+
+  text-align: center;
+
+  color: #777;
+
+  font-size: 14px;
+}
+
+
+/* =========================
+   NAVIGATION
+========================= */
+
+.addProductShort {
+  display: none;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+
+  gap: 15px;
+
+  flex-shrink: 0;
+}
+
+.nav a {
+  text-decoration: none;
+
+  font-size: 16px;
+
+  font-weight: 500;
+
+  color: white;
+
+  transition: color 0.2s ease;
+}
+
+.nav a:hover {
+  color: #60a5fa;
+}
+
+
+/* =========================
+   CART / PROFILE
+========================= */
+
+.actionLink {
+  display: flex;
+  align-items: center;
+
+  gap: 6px;
+
+  padding: 8px 6px;
+}
+
+.actionLink svg {
+  font-size: 18px;
+}
+
+/* =========================
+   PROFILE BUTTON & DROPDOWN
+========================= */
+
+.profileContainer {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.profileButton {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 6px;
+  border: none;
+  background: transparent;
+  color: white;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.profileButton:hover {
+  color: #60a5fa;
+}
+
+.profileButton svg {
+  font-size: 18px;
+}
+
+.profileDropdown {
+  position: absolute;
+  top: calc(100% + 12px);
+  right: 0;
+  width: 190px;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.25);
+  overflow: hidden;
+  z-index: 2000;
+}
+
+.profileDropdown button {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 13px 15px;
+  border: none;
+  background: white;
+  color: #222;
+  font-size: 14px;
+  text-align: left;
+  cursor: pointer;
+}
+
+.profileDropdown button:hover {
+  background: #f1f5f9;
+}
+
+.profileDropdown button svg {
+  width: 17px;
+}
+
+/* =========================
+   MODAL
+========================= */
+
+.modalOverlay {
+  position: fixed;
+  inset: 0;
+  z-index: 5000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  box-sizing: border-box;
+  background: rgba(0, 0, 0, 0.55);
+}
+
+.profileModal {
+  width: 100%;
+  max-width: 440px;
+  max-height: 90vh;
+  overflow-y: auto;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.3);
+}
+
+.modalHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 22px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.modalHeader h2 {
+  margin: 0;
+  font-size: 22px;
+  color: #111827;
+}
+
+.closeButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border: none;
+  border-radius: 6px;
+  background: transparent;
+  color: #555;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.closeButton:hover {
+  background: #f3f4f6;
+}
+
+.profileForm {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  padding: 22px;
+}
+
+.profileForm label {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  color: #374151;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.profileForm input {
+  width: 100%;
+  height: 42px;
+  padding: 0 12px;
+  box-sizing: border-box;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  outline: none;
+  color: #111827;
+  font-size: 14px;
+}
+
+.profileForm input:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.12);
+}
+
+.profileForm .readOnlyInput {
+  background: #f3f4f6;
+  color: #6b7280;
+  cursor: not-allowed;
+}
+
+/* =========================
+   PASSWORD VISIBILITY
+========================= */
+
+.passwordInputWrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.passwordInputWrapper input {
+  padding-right: 44px;
+}
+
+.passwordToggle {
+  position: absolute;
+  right: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border: none;
+  border-radius: 5px;
+  background: transparent;
+  color: #6b7280;
+  cursor: pointer;
+}
+
+.passwordToggle:hover {
+  color: #2563eb;
+  background: #f3f4f6;
+}
+
+/* =========================
+   MESSAGES & ACTIONS
+========================= */
+
+.profileError {
+  margin: 0;
+  color: #dc2626;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.profileSuccess {
+  margin: 0;
+  color: #15803d;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.modalMessage {
+  padding: 10px 22px 22px;
+  color: #6b7280;
+}
+
+.modalActions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 5px;
+}
+
+.cancelButton,
+.saveButton {
+  min-height: 40px;
+  padding: 0 16px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.cancelButton {
+  border: 1px solid #d1d5db;
+  background: white;
+  color: #374151;
+}
+
+.cancelButton:hover {
+  background: #f3f4f6;
+}
+
+.saveButton {
+  border: 1px solid #2563eb;
+  background: #2563eb;
+  color: white;
+}
+
+.saveButton:hover {
+  background: #1d4ed8;
+}
+
+.cancelButton:disabled,
+.saveButton:disabled,
+.closeButton:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* =========================
+   HEADER BRAND / LOGO
+========================= */
+
+.headerBrand {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+  cursor: pointer;
+  min-width: 0;
+}
+
+.headerBrandIcon {
+  width: 38px;
+  height: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+
+  border-radius: 10px;
+  background: #f5d76e;
+  color: #131921;
+
+  font-size: 18px;
+}
+
+.headerBrandText {
+  color: #ffffff;
+  font-size: 21px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  white-space: nowrap;
+  line-height: 1;
+}
+
+/* Tablet */
+@media (max-width: 900px) {
+  .headerBrand {
+    gap: 6px;
+  }
+
+  .headerBrandIcon {
+    width: 33px;
+    height: 33px;
+    font-size: 16px;
+  }
+
+  .headerBrandText {
+    font-size: 17px;
+    letter-spacing: 1px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  .headerBrand {
+    gap: 5px;
+  }
+
+  .headerBrandIcon {
+    width: 29px;
+    height: 29px;
+    border-radius: 8px;
+    font-size: 14px;
+  }
+
+  .headerBrandText {
+    font-size: 13px;
+    letter-spacing: 0.5px;
+  }
+}
+
+/* Small phones */
+@media (max-width: 400px) {
+ 
+}
+
+
+
+/* =========================
+   TABLET
+========================= */
+
+@media (max-width: 900px) {
+
+  .header {
+    gap: 12px;
+    padding: 0 15px;
+  }
+
+  .location {
+    display: none;
+  }
+
+  .logoSection img {
+    width: 115px;
+  }
+
+  .searchContainer {
+    min-width: 0;
+  }
+
+  .nav {
+    gap: 10px;
+  }
+
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 600px) {
+
+  .header {
+    height: 60px;
+    padding: 0 10px;
+    gap: 8px;
+  }
+
+  .logoSection img {
+    width: 85px;
+    height: 55px;
+  }
+
+  .searchContainer {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .search input {
+    height: 36px;
+    padding: 0 38px 0 10px;
+    font-size: 13px;
+  }
+
+  .search button {
+    width: 38px;
+    height: 36px;
+    margin-left: -38px;
+    font-size: 15px;
+  }
+
+  .nav {
+    gap: 4px;
+  }
+
+  .actionLink {
+    padding: 7px 4px;
+    gap: 0;
+  }
+
+  .actionLink svg {
+    font-size: 18px;
+  }
+
+  .actionLink span {
+    display: none;
+  }
+
+  /* Admin Add Product */
+  .addProductFull {
+    display: none;
+  }
+
+  .addProductShort {
+    display: inline;
+  }
+
+  .profileButton {
+    gap: 0;
+    padding: 7px 4px;
+  }
+
+  .profileButton span {
+    display: none;
+  }
+
+  .profileDropdown {
+    top: calc(100% + 10px);
+    width: 185px;
+  }
+
+  .profileModal {
+    max-width: 100%;
+  }
+
+  .modalHeader {
+    padding: 17px;
+  }
+
+  .profileForm {
+    padding: 17px;
+  }
+}
+
+/* =========================
+   SMALL PHONES
+========================= */
+
+@media (max-width: 400px) {
+
+  .header {
+    height: 56px;
+
+    padding: 0 7px;
+
+    gap: 6px;
+  }
+
+  .logoSection img {
+    width: 72px;
+    height: 50px;
+  }
+
+  .search input {
+    height: 34px;
+
+    padding: 0 35px 0 9px;
+
+    font-size: 12px;
+  }
+
+  .search button {
+    width: 35px;
+    height: 34px;
+
+    margin-left: -35px;
+
+    font-size: 14px;
+  }
+
+  .nav {
+    gap: 2px;
+  }
+
+  .actionLink {
+    padding: 6px 3px;
+  }
+
+  .actionLink svg {
+    font-size: 17px;
+  }
+
+  /* Admin Add Product */
+  .addProductFull {
+    display: none;
+  }
+
+  .addProductShort {
+    display: inline;
+  }
+
+   .headerBrandText {
+    font-size: 11px;
+    letter-spacing: 0;
+  }
+
+  .headerBrandIcon {
+    width: 26px;
+    height: 26px;
+    font-size: 12px;
+  }
+}

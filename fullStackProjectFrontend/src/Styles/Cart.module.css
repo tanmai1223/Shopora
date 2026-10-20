@@ -1,0 +1,30 @@
+.cartPage {
+  min-height: 100vh;
+  background-color: white;
+}
+
+.cartContent {
+  padding: 20px 35px;
+  box-sizing: border-box;
+}
+
+/* Tablet */
+@media (max-width: 800px) {
+  .cartContent {
+    padding: 20px 25px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  .cartContent {
+    padding: 15px;
+  }
+}
+
+/* Small mobile */
+@media (max-width: 400px) {
+  .cartContent {
+    padding: 10px;
+  }
+}

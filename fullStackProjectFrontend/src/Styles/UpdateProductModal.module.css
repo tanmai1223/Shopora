@@ -1,0 +1,344 @@
+.overlay {
+  position: fixed;
+  inset: 0;
+
+  background: rgba(0, 0, 0, 0.55);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  z-index: 1000;
+
+  padding: 15px;
+  box-sizing: border-box;
+}
+
+.modal {
+  position: relative;
+
+  width: 90%;
+  max-width: 700px;
+  max-height: 90vh;
+
+  overflow-y: auto;
+  overflow-x: hidden;
+
+  background: white;
+
+  border-radius: 12px;
+
+  padding: 35px;
+
+  box-sizing: border-box;
+}
+
+.modal h2 {
+  margin: 0 0 25px;
+  color: #222;
+  font-size: 26px;
+}
+
+.closeButton {
+  position: absolute;
+
+  top: 12px;
+  right: 15px;
+
+  width: 32px;
+  height: 32px;
+
+  border: none;
+  background: none;
+
+  font-size: 28px;
+
+  cursor: pointer;
+  color: #555;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.closeButton:hover {
+  color: #000;
+}
+
+.formGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+
+  gap: 20px;
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+
+  gap: 7px;
+
+  min-width: 0;
+}
+
+.formGroup label {
+  font-size: 14px;
+  font-weight: 600;
+
+  color: #333;
+}
+
+.formGroup input,
+.formGroup select,
+.formGroup textarea {
+  width: 100%;
+
+  box-sizing: border-box;
+
+  padding: 11px 13px;
+
+  border: 1px solid #d5d5d5;
+  border-radius: 7px;
+
+  font-size: 14px;
+
+  outline: none;
+  font-family: inherit;
+
+  background: white;
+}
+
+.formGroup input:focus,
+.formGroup select:focus,
+.formGroup textarea:focus {
+  border-color: #2563eb;
+}
+
+.formGroup textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.fullWidth {
+  grid-column: 1 / -1;
+}
+
+/* =========================
+   ACTIONS
+========================= */
+
+.actions {
+  display: flex;
+
+  justify-content: flex-end;
+
+  gap: 12px;
+
+  margin-top: 28px;
+
+  padding-top: 20px;
+
+  border-top: 1px solid #eee;
+}
+
+.actions button {
+  padding: 11px 20px;
+
+  border-radius: 7px;
+
+  border: none;
+
+  font-size: 14px;
+  font-weight: 600;
+
+  cursor: pointer;
+}
+
+.cancelButton {
+  background: #eee;
+  color: #333;
+}
+
+.cancelButton:hover {
+  background: #ddd;
+}
+
+.saveButton {
+  background: #2563eb;
+  color: white;
+}
+
+.saveButton:hover {
+  background: #1d4ed8;
+}
+
+
+/* =========================
+   TABLET
+========================= */
+
+@media (max-width: 800px) {
+
+  .overlay {
+    padding: 15px;
+  }
+
+  .modal {
+    width: 95%;
+    padding: 30px;
+  }
+
+  .formGrid {
+    gap: 18px;
+  }
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 600px) {
+
+  .overlay {
+    padding: 10px;
+    align-items: center;
+  }
+
+  .modal {
+    width: 100%;
+    max-width: 500px;
+
+    max-height: 94vh;
+
+    padding: 25px 18px;
+
+    border-radius: 10px;
+  }
+
+  .modal h2 {
+    font-size: 22px;
+
+    margin-bottom: 20px;
+
+    padding-right: 30px;
+  }
+
+  .closeButton {
+    top: 10px;
+    right: 10px;
+
+    width: 30px;
+    height: 30px;
+
+    font-size: 25px;
+  }
+
+  .formGrid {
+    grid-template-columns: 1fr;
+
+    gap: 16px;
+  }
+
+  .fullWidth {
+    grid-column: auto;
+  }
+
+  .formGroup {
+    width: 100%;
+  }
+
+  .formGroup label {
+    font-size: 13px;
+  }
+
+  .formGroup input,
+  .formGroup select,
+  .formGroup textarea {
+    width: 100%;
+
+    padding: 11px 12px;
+
+    font-size: 14px;
+  }
+
+  .formGroup textarea {
+    min-height: 100px;
+  }
+
+  .actions {
+    flex-direction: column;
+
+    gap: 10px;
+
+    margin-top: 22px;
+
+    padding-top: 18px;
+  }
+
+  .actions button {
+    width: 100%;
+
+    padding: 12px;
+
+    font-size: 14px;
+  }
+}
+
+
+/* =========================
+   SMALL PHONES
+========================= */
+
+@media (max-width: 400px) {
+
+  .overlay {
+    padding: 7px;
+  }
+
+  .modal {
+    width: 100%;
+
+    max-height: 96vh;
+
+    padding: 22px 14px;
+
+    border-radius: 9px;
+  }
+
+  .modal h2 {
+    font-size: 20px;
+
+    margin-bottom: 18px;
+  }
+
+  .formGrid {
+    gap: 14px;
+  }
+
+  .formGroup label {
+    font-size: 12px;
+  }
+
+  .formGroup input,
+  .formGroup select,
+  .formGroup textarea {
+    padding: 10px;
+
+    font-size: 13px;
+  }
+
+  .formGroup textarea {
+    min-height: 90px;
+  }
+
+  .actions {
+    margin-top: 18px;
+    padding-top: 15px;
+  }
+
+  .actions button {
+    padding: 11px;
+    font-size: 13px;
+  }
+}
