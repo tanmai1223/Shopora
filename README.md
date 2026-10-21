@@ -2,8 +2,8 @@
 
 SHOPORA is a full-stack e-commerce web application built using **React, Java Spring Boot, and PostgreSQL**. It provides a seamless shopping experience with product browsing, live search, category filtering, user authentication, shopping cart functionality, and administrative product management.
 
-🚀 **Live Demo:** https://shoporas.netlify.app/
-⚙️ **Backend API:** https://shopora-g7bh.onrender.com  
+🚀 **Live Demo:** https://shoporas.netlify.app              
+⚙️ **Backend API:** https://shopora-g7bh.onrender.com   
 📂 **GitHub Repository:** https://github.com/tanmai1223/Shopora
 
 ---
