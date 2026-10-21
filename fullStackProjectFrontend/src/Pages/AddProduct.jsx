@@ -107,7 +107,7 @@ function AddProduct() {
 
       e.target.reset();
 
-      navigate("/");
+     
     } catch (error) {
       console.log(error);
       toast.error("Failed to add product");

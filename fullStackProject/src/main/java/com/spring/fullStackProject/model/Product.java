@@ -1,9 +1,6 @@
 package com.spring.fullStackProject.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -16,6 +13,7 @@ public class Product {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String productName;
+    @Column(columnDefinition = "TEXT")
     private String description;
     private double price;
     private String brand;
