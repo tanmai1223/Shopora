@@ -21,19 +21,21 @@
   max-width: 100%;
 
   min-height: 500px;
+  max-height: calc(100vh - 40px);
 
   display: grid;
   grid-template-columns: 45% 55%;
 
   background: white;
-
   border-radius: 14px;
 
-  overflow: hidden;
+  overflow-x: hidden;
+  overflow-y: auto;
+
+  overscroll-behavior: contain;
 
   box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
 }
-
 
 /* =========================
    CLOSE BUTTON
@@ -462,7 +464,11 @@
   
 }
 
-
+@media (max-height: 540px) {
+  .modal {
+    min-height: 0;
+  }
+}
 /* =========================
    SMALL PHONES
 ========================= */

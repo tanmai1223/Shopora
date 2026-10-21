@@ -21,7 +21,7 @@ import {
 const API_URL = import.meta.env.VITE_API_URL;
 
 
-function Header({ onSearch = () => {} }) {
+function Header() {
   const [searchText, setSearchText] = useState("");
   const [suggestions, setSuggestions] = useState([]);
   const [showSuggestions, setShowSuggestions] = useState(false);
@@ -115,27 +115,39 @@ function Header({ onSearch = () => {} }) {
   // SELECT PRODUCT
   // --------------------------------
 
-  const handleProductClick = (product) => {
-    setShowSuggestions(false);
-    setSearchText("");
-    onSearch(product.productName);
-  };
+ const handleProductClick = (product) => {
+  const keyword = searchText.trim() || product.productName;
+
+  setShowSuggestions(false);
+  setSearchText("");
+
+  navigate("/home", {
+    state: {
+      searchKeyword: keyword,
+    },
+  });
+};
 
   // --------------------------------
   // SEARCH SUBMIT
   // --------------------------------
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+ const handleSubmit = (e) => {
+  e.preventDefault();
 
-    const keyword = searchText.trim();
+  const keyword = searchText.trim();
 
-    if (!keyword) return;
+  if (!keyword) return;
 
-    setShowSuggestions(false);
-    onSearch(keyword);
-  };
+  setShowSuggestions(false);
+  setSearchText("");
 
+  navigate("/home", {
+    state: {
+      searchKeyword: keyword,
+    },
+  });
+};
   // --------------------------------
   // LOGOUT
   // --------------------------------

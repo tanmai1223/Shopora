@@ -6,56 +6,62 @@ import UpdateProductModal from "./UpdateProductModal";
 import toast from "react-hot-toast";
 const API_URL = import.meta.env.VITE_API_URL;
 
-
 function Cards({ category, searchResults }) {
   const [products, setProducts] = useState([]);
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [editingProduct, setEditingProduct] = useState(null);
-
+  const [addingToCartIds, setAddingToCartIds] = useState([]);
   const token = localStorage.getItem("token");
   const role = localStorage.getItem("role");
-  const userId=localStorage.getItem("userId")
+  const userId = localStorage.getItem("userId");
   useEffect(() => {
-    // If search was performed, don't fetch category products
-    if (searchResults !== null) {
-      setProducts(searchResults);
-      return;
-    }
+    let ignore = false;
 
     const fetchProducts = async () => {
+      // If search results exist, display only those products.
+      if (searchResults !== null) {
+        setProducts(searchResults);
+        return;
+      }
+
       try {
         let res;
 
         if (category === "All") {
-          res = await axios.get(
-            `${API_URL}/api/products`,
-            {
-              headers: {
-                Authorization: `Bearer ${token}`,
-              },
-            }
-          );
+          res = await axios.get(`${API_URL}/api/products`, {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          });
         } else {
           res = await axios.get(
-            `${API_URL}/api/products/categories/${encodeURIComponent(
-              category
-            )}`,
+            `${API_URL}/api/products/categories/${encodeURIComponent(category)}`,
             {
               headers: {
                 Authorization: `Bearer ${token}`,
               },
-            }
+            },
           );
         }
 
-        setProducts(res.data);
+        // Ignore stale responses from previous requests.
+        if (!ignore) {
+          setProducts(res.data);
+        }
       } catch (error) {
-        console.log(error);
+        if (!ignore) {
+          console.error("Error fetching products:", error);
+        }
       }
     };
 
     fetchProducts();
-  }, [category, searchResults]);
+
+    // Prevent an older request from overwriting newer search results.
+    return () => {
+      ignore = true;
+    };
+  }, [category, searchResults, token]);
 
   // =========================
   // DELETE PRODUCT
@@ -63,20 +69,15 @@ function Cards({ category, searchResults }) {
 
   const handleDelete = async (productId) => {
     try {
-      await axios.delete(
-        `${API_URL}/api/product/${productId}`,
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
+      await axios.delete(`${API_URL}/api/product/${productId}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
 
       // Remove deleted product from UI
       setProducts((prevProducts) =>
-        prevProducts.filter(
-          (product) => product.id !== productId
-        )
+        prevProducts.filter((product) => product.id !== productId),
       );
 
       // Close modal if it is open
@@ -94,62 +95,55 @@ function Cards({ category, searchResults }) {
   // =========================
 
   const addToCart = async (product) => {
+    if (addingToCartIds.includes(product.id)) return;
+
+    setAddingToCartIds((prev) => [...prev, product.id]);
+
     try {
       const response = await axios.post(
         `${API_URL}/api/cart`,
         {
-          productId:product.id,
+          productId: product.id,
           quantity: 1,
-          userId:userId,
+          userId: userId,
         },
         {
           headers: {
             Authorization: `Bearer ${token}`,
           },
-        }
+        },
       );
 
-     
       toast.success("Added to cart");
-
-      setSelectedProduct(null);
     } catch (error) {
       console.log("Error adding to cart:", error);
       toast.error("Couldn't add to cart");
+    } finally {
+      setAddingToCartIds((prev) => prev.filter((id) => id !== product.id));
     }
   };
 
   return (
     <div className={style.cardGrid}>
-
       {products.map((product) => (
         <div
           className={style.card}
           key={product.id}
           onClick={() => setSelectedProduct(product)}
         >
-
           {/* Product Image */}
           <div className={style.imageContainer}>
-            <img
-              src={product.imageUrl}
-              alt={product.productName}
-            />
+            <img src={product.imageUrl} alt={product.productName} />
           </div>
 
           {/* Product Name */}
           <h3>{product.productName}</h3>
 
           {/* Brand */}
-          <p className={style.brand}>
-            {product.brand}
-          </p>
+          <p className={style.brand}>{product.brand}</p>
 
           {/* Price */}
-          <p className={style.price}>
-            ₹{product.price}
-          </p>
-
+          <p className={style.price}>₹{product.price}</p>
 
           {/* =========================
               USER → ADD TO CART
@@ -157,6 +151,9 @@ function Cards({ category, searchResults }) {
 
           {role === "USER" && (
             <button
+              disabled={
+                addingToCartIds.includes(product.id) || !product.available
+              }
               onClick={(e) => {
                 e.stopPropagation();
                 addToCart(product);
@@ -166,14 +163,12 @@ function Cards({ category, searchResults }) {
             </button>
           )}
 
-
           {/* =========================
               ADMIN → UPDATE + DELETE
              ========================= */}
 
           {role === "ADMIN" && (
             <div className={style.adminActions}>
-
               <button
                 className={style.updateButton}
                 onClick={(e) => {
@@ -193,13 +188,10 @@ function Cards({ category, searchResults }) {
               >
                 Delete
               </button>
-
             </div>
           )}
-
         </div>
       ))}
-
 
       {/* =========================
           PRODUCT DETAILS MODAL
@@ -210,9 +202,9 @@ function Cards({ category, searchResults }) {
           product={selectedProduct}
           onClose={() => setSelectedProduct(null)}
           onAddToCart={addToCart}
+           addingToCart={addingToCartIds.includes(selectedProduct.id)}
         />
       )}
-
 
       {/* =========================
           UPDATE PRODUCT MODAL
@@ -221,26 +213,18 @@ function Cards({ category, searchResults }) {
       {editingProduct && (
         <UpdateProductModal
           product={editingProduct}
-
-          onClose={() =>
-            setEditingProduct(null)
-          }
-
+          onClose={() => setEditingProduct(null)}
           onUpdated={(updatedProduct) => {
-
             setProducts((prevProducts) =>
               prevProducts.map((product) =>
-                product.id === updatedProduct.id
-                  ? updatedProduct
-                  : product
-              )
+                product.id === updatedProduct.id ? updatedProduct : product,
+              ),
             );
 
             setEditingProduct(null);
           }}
         />
       )}
-
     </div>
   );
 }

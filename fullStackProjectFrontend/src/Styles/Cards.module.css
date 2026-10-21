@@ -19,7 +19,16 @@
   transform: translateY(-3px);
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
 }
-
+.card button:disabled {
+  cursor: not-allowed;
+}
+.card button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+.card button:disabled:not(:hover) {
+  opacity: 0.9;
+}
 /* Product image */
 
 .imageContainer {

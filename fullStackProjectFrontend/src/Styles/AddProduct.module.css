@@ -126,6 +126,11 @@
   font-size: 13px;
 }
 
+.submitButton:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
 .actions {
   display: flex;
   justify-content: flex-end;

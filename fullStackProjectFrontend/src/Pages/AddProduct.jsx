@@ -3,17 +3,16 @@ import axios from "axios";
 import style from "../Styles/AddProduct.module.css";
 import Header from "../Components/Header";
 import Category from "../Components/Category";
-import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 const API_URL = import.meta.env.VITE_API_URL;
 
 function AddProduct() {
-  const navigate = useNavigate();
-
+ 
   const [categories, setCategories] = useState([]);
   const [categorySearch, setCategorySearch] = useState("");
   const [showCategories, setShowCategories] = useState(false);
   const token = localStorage.getItem("token");
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const [product, setProduct] = useState({
     productName: "",
@@ -63,7 +62,9 @@ function AddProduct() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+       if (isSubmitting) return;
 
+  setIsSubmitting(true);
     try {
       const formData = new FormData();
 
@@ -111,7 +112,9 @@ function AddProduct() {
     } catch (error) {
       console.log(error);
       toast.error("Failed to add product");
-    }
+    }finally {
+    setIsSubmitting(false);
+  }
   };
 
   return (
@@ -328,9 +331,13 @@ function AddProduct() {
                 Cancel
               </button>
 
-              <button type="submit" className={style.submitButton}>
-                Add Product
-              </button>
+             <button
+  type="submit"
+  className={style.submitButton}
+  disabled={isSubmitting}
+>
+  {isSubmitting ? "Adding Product..." : "Add Product"}
+</button>
             </div>
           </form>
         </div>

@@ -4,11 +4,11 @@ function ProductModal({
   product,
   onClose,
   onAddToCart,
-  
+  addingToCart
 }) {
   if (!product) return null;
  const role=localStorage.getItem("role");
- console.log(role);
+ //console.log(role);
   return (
     <div
       className={style.overlay}
@@ -165,7 +165,7 @@ function ProductModal({
                 onClick={() =>
                   onAddToCart(product)
                 }
-                disabled={!product.available}
+                disabled={addingToCart || !product.available}
               >
                 Add to Cart
               </button>
