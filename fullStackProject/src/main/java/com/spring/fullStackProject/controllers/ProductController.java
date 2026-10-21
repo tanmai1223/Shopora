@@ -65,7 +65,6 @@ public class ProductController {
             return new ResponseEntity<>(savedProduct, HttpStatus.CREATED);
 
         } catch (Exception e) {
-            e.printStackTrace();
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
     }

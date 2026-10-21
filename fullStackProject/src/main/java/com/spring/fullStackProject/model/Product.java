@@ -12,9 +12,11 @@ public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    private String productName;
+
     @Column(columnDefinition = "TEXT")
     private String description;
+
+    private String productName;
     private double price;
     private String brand;
     private String category;
